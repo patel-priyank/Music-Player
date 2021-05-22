@@ -145,6 +145,7 @@ button {
   font-size: 0.75rem;
   display: flex;
   justify-content: space-between;
+  color: hsl(300, 5%, 50%);
 }
 
 .controls {
