@@ -172,7 +172,12 @@ button {
   }
 
   .music-info {
-    padding: 1rem 3rem 3.5rem 3rem;
+    width: 65%;
+    padding: 1rem 2rem 3.5rem 2rem;
+  }
+
+  .music-info h4 {
+    text-align: center;
   }
 }
 
