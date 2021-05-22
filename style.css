@@ -107,9 +107,8 @@ button {
   left: 50%;
   width: 50%;
   padding: 0.625rem 1.5rem 1.5rem 8rem;
-  opacity: 0;
-  transform: translate(-50%, 0%);
-  transition: transform 0.3s ease-in, opacity 0.3 ease-in;
+  display: none;
+  transform: translate(-50%, -100%);
 }
 
 .music-info h4 {
@@ -119,8 +118,7 @@ button {
 }
 
 .music-container.play .music-info {
-  opacity: 1;
-  transform: translate(-50%, -100%);
+  display: unset;
 }
 
 .progress-bar-container {
