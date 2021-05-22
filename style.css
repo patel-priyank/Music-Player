@@ -16,6 +16,11 @@ body {
   justify-content: center; /* center vertically */
 }
 
+h1 {
+  position: fixed;
+  top: 1rem;
+}
+
 .music-container {
   background-color: hsl(0, 0%, 93%);
   border-radius: 0.875rem;
@@ -23,7 +28,6 @@ body {
   display: flex;
   padding: 1.5rem 2rem;
   position: relative;
-  margin-top: 5.5rem;
   z-index: 10;
 }
 
@@ -174,7 +178,6 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    margin-top: 8.75rem;
   }
 
   .image-container {
