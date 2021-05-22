@@ -50,14 +50,20 @@ function pauseSong() {
 }
 
 function prevSong() {
-  --songIndex;
+  const progressPercent = (audio.currentTime / audio.duration) * 100;
 
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
+  if (progressPercent < 10) {
+    --songIndex;
+
+    if (songIndex < 0) {
+      songIndex = songs.length - 1;
+    }
+
+    loadSong(songs[songIndex]);
+    playSong();
+  } else {
+    audio.currentTime = 0;
   }
-
-  loadSong(songs[songIndex]);
-  playSong();
 }
 
 function nextSong() {
