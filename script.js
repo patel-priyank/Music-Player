@@ -162,6 +162,9 @@ progressBarContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
 
+audio.addEventListener('play', playSong);
+audio.addEventListener('pause', pauseSong);
+
 muteBtn.addEventListener('click', muteOrUnmute);
 
 github.addEventListener('click', () => {
