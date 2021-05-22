@@ -16,11 +16,6 @@ body {
   justify-content: center; /* center vertically */
 }
 
-h1 {
-  position: fixed;
-  top: 1rem;
-}
-
 .music-container {
   background-color: hsl(0, 0%, 93%);
   border-radius: 0.875rem;
