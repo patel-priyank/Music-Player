@@ -147,6 +147,19 @@ button {
   justify-content: space-between;
 }
 
+.controls {
+  text-align: center;
+  background-color: hsl(0, 0%, 93%);
+  filter: brightness(95%);
+  border-radius: 0 0 0.875rem 0.875rem;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 35%;
+  padding: 0.625rem;
+  transform: translate(-50%, 0%);
+}
+
 .github {
   font-size: 1.5rem;
   position: fixed;
@@ -222,5 +235,9 @@ button {
 
   .progress-bar {
     background-color: hsl(255, 95%, 20%);
+  }
+
+  .controls {
+    background-color: hsl(0, 0%, 7%);
   }
 }

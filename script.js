@@ -2,6 +2,7 @@ const musicContainer = document.querySelector('.music-container');
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
+const muteBtn = document.querySelector('#mute');
 const audio = document.querySelector('#audio');
 const progressBar = document.querySelector('.progress-bar');
 const progressBarContainer = document.querySelector('.progress-bar-container');
@@ -123,6 +124,30 @@ function setProgress(event) {
   audio.currentTime = (clickX / width) * duration;
 }
 
+function muteOrUnmute() {
+  const isMuted = audio.muted;
+
+  if (isMuted) {
+    unmuteSong();
+  } else {
+    muteSong();
+  }
+}
+
+function muteSong() {
+  muteBtn.querySelector('i.fas').classList.remove('fa-volume-up');
+  muteBtn.querySelector('i.fas').classList.add('fa-volume-mute');
+
+  audio.muted = true;
+}
+
+function unmuteSong() {
+  muteBtn.querySelector('i.fas').classList.remove('fa-volume-mute');
+  muteBtn.querySelector('i.fas').classList.add('fa-volume-up');
+
+  audio.muted = false;
+}
+
 // Event Listeners
 playBtn.addEventListener('click', playOrPause);
 
@@ -135,6 +160,8 @@ audio.addEventListener('timeupdate', updateProgress);
 progressBarContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
+
+muteBtn.addEventListener('click', muteOrUnmute);
 
 github.addEventListener('click', () => {
   window.open('https://github.com/patel-priyank/Music-Player');
