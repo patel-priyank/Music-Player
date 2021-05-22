@@ -32,17 +32,6 @@ function loadSong(song) {
   title.innerText = song;
   audio.src = `./music/${song}.mp3`;
   cover.src = `./images/${song}.jpg`;
-
-  setTimeout(() => {
-    totalMin = Math.floor(audio.duration / 60)
-      .toString()
-      .padStart(2, 0);
-    totalSec = Math.floor(audio.duration % 60)
-      .toString()
-      .padStart(2, 0);
-
-    totalTime.innerText = totalMin + ':' + totalSec;
-  }, 100);
 }
 
 function playOrPause() {
@@ -112,8 +101,20 @@ function updateProgress(event) {
   elapsedSec = Math.floor(audio.currentTime % 60)
     .toString()
     .padStart(2, 0);
+  totalMin = Math.floor(audio.duration / 60)
+    .toString()
+    .padStart(2, 0);
+  totalSec = Math.floor(audio.duration % 60)
+    .toString()
+    .padStart(2, 0);
 
-  elapsedTime.innerText = elapsedMin + ':' + elapsedSec;
+  if (!isNaN(elapsedMin) && !isNaN(elapsedSec)) {
+    elapsedTime.innerText = elapsedMin + ':' + elapsedSec;
+  }
+
+  if (!isNaN(totalMin) && !isNaN(totalSec)) {
+    totalTime.innerText = totalMin + ':' + totalSec;
+  }
 }
 
 function setProgress(event) {
