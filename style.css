@@ -23,7 +23,7 @@ body {
   display: flex;
   padding: 1.5rem 2rem;
   position: relative;
-  margin-top: 4.25rem;
+  margin-top: 5.5rem;
   z-index: 10;
 }
 
@@ -106,7 +106,7 @@ button {
   top: 0;
   left: 50%;
   width: 50%;
-  padding: 0.625rem 1.5rem 0.625rem 8rem;
+  padding: 0.625rem 1.5rem 1.5rem 8rem;
   opacity: 0;
   transform: translate(-50%, 0%);
   transition: transform 0.3s ease-in, opacity 0.3 ease-in;
@@ -140,6 +140,13 @@ button {
   transition: width 0.1s linear;
 }
 
+.progress-time {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 .github {
   font-size: 1.5rem;
   position: fixed;
@@ -155,7 +162,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    margin-top: 7.5rem;
+    margin-top: 8.75rem;
   }
 
   .image-container {

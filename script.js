@@ -5,6 +5,8 @@ const nextBtn = document.querySelector('#next');
 const audio = document.querySelector('#audio');
 const progressBar = document.querySelector('.progress-bar');
 const progressBarContainer = document.querySelector('.progress-bar-container');
+const elapsedTime = document.querySelector('#elapsed-time');
+const totalTime = document.querySelector('#total-time');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
 const github = document.querySelector('#github');
@@ -29,6 +31,17 @@ function loadSong(song) {
   title.innerText = song;
   audio.src = `./music/${song}.mp3`;
   cover.src = `./images/${song}.jpg`;
+
+  setTimeout(() => {
+    totalMin = Math.floor(audio.duration / 60)
+      .toString()
+      .padStart(2, 0);
+    totalSec = Math.floor(audio.duration % 60)
+      .toString()
+      .padStart(2, 0);
+
+    totalTime.innerText = totalMin + ':' + totalSec;
+  }, 100);
 }
 
 function playOrPause() {
@@ -91,6 +104,15 @@ function updateProgress(event) {
   const { duration, currentTime } = event.srcElement;
   const progressPercent = (currentTime / duration) * 100;
   progressBar.style.width = `${progressPercent}%`;
+
+  elapsedMin = Math.floor(audio.currentTime / 60)
+    .toString()
+    .padStart(2, 0);
+  elapsedSec = Math.floor(audio.currentTime % 60)
+    .toString()
+    .padStart(2, 0);
+
+  elapsedTime.innerText = elapsedMin + ':' + elapsedSec;
 }
 
 function setProgress(event) {
