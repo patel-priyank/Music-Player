@@ -31,6 +31,16 @@ function loadSong(song) {
   cover.src = `./images/${song}.jpg`;
 }
 
+function playOrPause() {
+  const isPlaying = musicContainer.classList.contains('play');
+
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+}
+
 function playSong() {
   localStorage.setItem('currentSong', songs[songIndex]);
 
@@ -92,15 +102,7 @@ function setProgress(event) {
 }
 
 // Event Listeners
-playBtn.addEventListener('click', () => {
-  const isPlaying = musicContainer.classList.contains('play');
-
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playSong();
-  }
-});
+playBtn.addEventListener('click', playOrPause);
 
 // Change song events
 prevBtn.addEventListener('click', prevSong);
@@ -114,4 +116,22 @@ audio.addEventListener('ended', nextSong);
 
 github.addEventListener('click', () => {
   window.open('https://github.com/patel-priyank/Music-Player');
+});
+
+window.addEventListener('keydown', (event) => {
+  switch (event.code) {
+    case 'Space':
+      playOrPause();
+      break;
+
+    case 'ArrowLeft':
+    case 'KeyP':
+      prevSong();
+      break;
+
+    case 'ArrowRight':
+    case 'KeyN':
+      nextSong();
+      break;
+  }
 });
