@@ -7,6 +7,7 @@ const progress = document.querySelector('.progress');
 const progressContainer = document.querySelector('.progress-container');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
+const github = document.querySelector('#github');
 
 // Song titles
 const songs = ['Emoji', 'Fun Pop', 'Relax'];
@@ -96,3 +97,7 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
+
+github.addEventListener('click', () => {
+  window.open('https://github.com/patel-priyank/Music-Player');
+});

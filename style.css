@@ -139,6 +139,14 @@ button {
   transition: width 0.1s linear;
 }
 
+.github {
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
 /* Media Query: Tablet or smaller */
 @media screen and (max-width: 800px) {
   .music-container {
