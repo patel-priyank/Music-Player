@@ -3,8 +3,8 @@ const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
 const audio = document.querySelector('#audio');
-const progress = document.querySelector('.progress');
-const progressContainer = document.querySelector('.progress-container');
+const progressBar = document.querySelector('.progress-bar');
+const progressBarContainer = document.querySelector('.progress-bar-container');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
 const github = document.querySelector('#github');
@@ -90,7 +90,7 @@ function nextSong() {
 function updateProgress(event) {
   const { duration, currentTime } = event.srcElement;
   const progressPercent = (currentTime / duration) * 100;
-  progress.style.width = `${progressPercent}%`;
+  progressBar.style.width = `${progressPercent}%`;
 }
 
 function setProgress(event) {
@@ -110,7 +110,7 @@ nextBtn.addEventListener('click', nextSong);
 
 audio.addEventListener('timeupdate', updateProgress);
 
-progressContainer.addEventListener('click', setProgress);
+progressBarContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
 

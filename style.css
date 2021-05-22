@@ -123,7 +123,7 @@ button {
   transform: translate(-50%, -100%);
 }
 
-.progress-container {
+.progress-bar-container {
   background-color: white;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -132,7 +132,7 @@ button {
   width: 100%;
 }
 
-.progress {
+.progress-bar {
   background-color: hsl(255, 95%, 80%);
   border-radius: 0.25rem;
   height: 100%;
@@ -213,7 +213,7 @@ button {
     background-color: rgba(0, 0, 0, 0.35);
   }
 
-  .progress {
+  .progress-bar {
     background-color: hsl(255, 95%, 20%);
   }
 }
