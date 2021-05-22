@@ -142,7 +142,7 @@ github.addEventListener('click', () => {
 
 window.addEventListener('keydown', (event) => {
   if (document.activeElement.tagName.toLowerCase() === 'button') {
-    event.preventDefault();
+    document.activeElement.blur();
   }
 
   switch (event.code) {
