@@ -13,7 +13,13 @@ const github = document.querySelector('#github');
 const songs = ['Emoji', 'Fun Pop', 'Relax'];
 
 // Keep track of songs
-let songIndex = 1;
+let songIndex = 0;
+
+let songFromStorage = localStorage.getItem('currentSong');
+
+if (songFromStorage !== undefined && songFromStorage !== null && songs.includes(songFromStorage)) {
+  songIndex = songs.indexOf(songFromStorage);
+}
 
 // Initially load song info into DOM
 loadSong(songs[songIndex]);
@@ -26,6 +32,8 @@ function loadSong(song) {
 }
 
 function playSong() {
+  localStorage.setItem('currentSong', songs[songIndex]);
+
   musicContainer.classList.add('play');
   playBtn.querySelector('i.fas').classList.remove('fa-play');
   playBtn.querySelector('i.fas').classList.add('fa-pause');
