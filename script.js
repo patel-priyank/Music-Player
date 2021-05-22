@@ -187,5 +187,9 @@ window.addEventListener('keydown', (event) => {
     case 'KeyN':
       nextSong();
       break;
+
+    case 'KeyM':
+      muteOrUnmute();
+      break;
   }
 });
