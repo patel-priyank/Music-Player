@@ -141,6 +141,10 @@ github.addEventListener('click', () => {
 });
 
 window.addEventListener('keydown', (event) => {
+  if (document.activeElement.tagName.toLowerCase() === 'button') {
+    event.preventDefault();
+  }
+
   switch (event.code) {
     case 'Space':
       playOrPause();
