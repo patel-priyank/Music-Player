@@ -8,7 +8,7 @@ A simple and clean-looking Music Player using vanilla JavaScript.
 - Go back/forward
 - Mute
 - Clickable progress bar
-- Keyboard support (Space to play/pause, left/right for back/forward)
+- Keyboard support (Space to play/pause, Left/P for back, Right/N for back/forward, M to mute/unmute)
 - Remembers the last playing song
 - Responsive (can be used on both desktop and mobile)
 - Dark mode
