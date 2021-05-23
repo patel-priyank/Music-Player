@@ -178,6 +178,11 @@ window.addEventListener('keydown', (event) => {
 
   switch (event.code) {
     case 'Space':
+      if (event.target === document.body) {
+        // prevent scrolling with Space
+        event.preventDefault();
+      }
+
       playOrPause();
       break;
 
@@ -196,3 +201,10 @@ window.addEventListener('keydown', (event) => {
       break;
   }
 });
+
+// Scroll to middle after page load
+setTimeout(() => {
+  if (window.innerHeight <= 450) {
+    window.scrollTo(0, window.innerHeight / 5);
+  }
+}, 150);
