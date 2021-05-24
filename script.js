@@ -10,6 +10,8 @@ const elapsedTime = document.querySelector('#elapsed-time');
 const totalTime = document.querySelector('#total-time');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
+const themeSwitcher = document.querySelector('#theme-switcher');
+const themeSwitcherImage = document.querySelector('#theme-switcher-image');
 const github = document.querySelector('#github');
 
 // Song titles
@@ -26,6 +28,9 @@ if (songFromStorage !== undefined && songFromStorage !== null && songs.includes(
 
 // Initially load song info into DOM
 loadSong(songs[songIndex]);
+
+// Initialize Theme (Light/Dark)
+initializeTheme();
 
 // Update song details
 function loadSong(song) {
@@ -149,6 +154,74 @@ function unmuteSong() {
   audio.muted = false;
 }
 
+function initializeTheme() {
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const localTheme = localStorage.getItem('theme');
+
+  switch (localTheme) {
+    case 'light':
+      loadTheme('light');
+      break;
+
+    case 'dark':
+      loadTheme('dark');
+      break;
+
+    default:
+      switch (systemTheme) {
+        case 'light':
+          loadTheme('auto_light');
+          break;
+
+        case 'dark':
+          loadTheme('auto_dark');
+          break;
+      }
+      break;
+  }
+}
+
+// Load selected theme
+function loadTheme(theme) {
+  switch (theme) {
+    case 'light':
+      themeSwitcherImage.src = './theme-icons/theme_light.svg';
+      document.querySelector('body').classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+      themeSwitcherImage.classList.add('light');
+      themeSwitcherImage.classList.remove('dark');
+      themeSwitcherImage.classList.remove('auto');
+      break;
+
+    case 'dark':
+      themeSwitcherImage.src = './theme-icons/theme_dark.svg';
+      document.querySelector('body').classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+      themeSwitcherImage.classList.remove('light');
+      themeSwitcherImage.classList.add('dark');
+      themeSwitcherImage.classList.remove('auto');
+      break;
+
+    case 'auto_light':
+      themeSwitcherImage.src = './theme-icons/theme_auto_light.svg';
+      document.querySelector('body').classList.remove('dark-mode');
+      localStorage.setItem('theme', 'auto');
+      themeSwitcherImage.classList.remove('light');
+      themeSwitcherImage.classList.remove('dark');
+      themeSwitcherImage.classList.add('auto');
+      break;
+
+    case 'auto_dark':
+      themeSwitcherImage.src = './theme-icons/theme_auto_dark.svg';
+      document.querySelector('body').classList.add('dark-mode');
+      localStorage.setItem('theme', 'auto');
+      themeSwitcherImage.classList.remove('light');
+      themeSwitcherImage.classList.remove('dark');
+      themeSwitcherImage.classList.add('auto');
+      break;
+  }
+}
+
 // Event Listeners
 playBtn.addEventListener('click', playOrPause);
 
@@ -166,6 +239,45 @@ audio.addEventListener('play', playSong);
 audio.addEventListener('pause', pauseSong);
 
 muteBtn.addEventListener('click', muteOrUnmute);
+
+// Switch theme
+themeSwitcher.addEventListener('click', () => {
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const localTheme = themeSwitcherImage.classList[0];
+
+  switch (localTheme) {
+    case 'light':
+      loadTheme('dark');
+      break;
+
+    case 'dark':
+      switch (systemTheme) {
+        case 'light':
+          loadTheme('auto_light');
+          break;
+
+        case 'dark':
+          loadTheme('auto_dark');
+          break;
+      }
+      break;
+
+    default:
+      loadTheme('light');
+      break;
+  }
+});
+
+// Switch theme when system theme is changed
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+  if (themeSwitcherImage.classList[0] !== 'light' && themeSwitcherImage.classList[0] !== 'dark') {
+    if (event.matches) {
+      loadTheme('auto_dark');
+    } else {
+      loadTheme('auto_light');
+    }
+  }
+});
 
 github.addEventListener('click', () => {
   window.open('https://github.com/patel-priyank/Music-Player');

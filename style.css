@@ -159,12 +159,29 @@ button {
   transform: translate(-50%, 0%);
 }
 
+.theme-switcher {
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  cursor: pointer;
+}
+
 .github {
   font-size: 1.5rem;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
   cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Media Query: Tablet or smaller */
@@ -206,42 +223,44 @@ button {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: linear-gradient(0deg, hsl(0, 0%, 4%) 25%, hsl(255, 97%, 13%) 90%);
-    color: white;
-  }
+/*#region Dark mode */
 
-  .music-container {
-    background-color: hsl(0, 0%, 7%);
-    box-shadow: 0 20px 20px 0 hsla(255, 97%, 13%, 0.6);
-  }
-
-  .image-container::after {
-    background-color: hsl(0, 0%, 7%);
-  }
-
-  .image-container img {
-    filter: brightness(75%);
-  }
-
-  .action-btn {
-    color: hsl(300, 5%, 35%);
-  }
-
-  .action-btn-big {
-    color: hsl(300, 5%, 50%);
-  }
-
-  .music-info {
-    background-color: rgba(0, 0, 0, 0.35);
-  }
-
-  .progress-bar {
-    background-color: hsl(255, 95%, 20%);
-  }
-
-  .controls {
-    background-color: hsl(0, 0%, 7%);
-  }
+body.dark-mode {
+  background-image: linear-gradient(0deg, hsl(0, 0%, 4%) 25%, hsl(255, 97%, 13%) 90%);
+  color: white;
 }
+
+body.dark-mode .music-container {
+  background-color: hsl(0, 0%, 7%);
+  box-shadow: 0 20px 20px 0 hsla(255, 97%, 13%, 0.6);
+}
+
+body.dark-mode .image-container::after {
+  background-color: hsl(0, 0%, 7%);
+}
+
+body.dark-mode .image-container img {
+  filter: brightness(75%);
+}
+
+body.dark-mode .action-btn {
+  color: hsl(300, 5%, 35%);
+}
+
+body.dark-mode .action-btn-big {
+  color: hsl(300, 5%, 50%);
+}
+
+body.dark-mode .music-info {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .progress-bar {
+  background-color: hsl(255, 95%, 20%);
+}
+
+body.dark-mode .controls {
+  background-color: hsl(0, 0%, 7%);
+}
+
+/*#endregion */

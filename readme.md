@@ -11,6 +11,6 @@ A simple and clean-looking Music Player using vanilla JavaScript.
 - Keyboard support (Space to play/pause, Left/P for back, Right/N for back/forward, M to mute/unmute)
 - Remembers the last playing song
 - Responsive (can be used on both desktop and mobile)
-- Dark mode
+- Theme support (light/dark/auto)
 
 You can try the app [here](https://patel-priyank.github.io/Music-Player/) (opens in the same tab).
