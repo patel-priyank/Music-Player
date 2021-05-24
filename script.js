@@ -247,10 +247,12 @@ themeSwitcher.addEventListener('click', () => {
 
   switch (localTheme) {
     case 'light':
+      // next will be dark
       loadTheme('dark');
       break;
 
     case 'dark':
+      // next will be auto
       switch (systemTheme) {
         case 'light':
           loadTheme('auto_light');
@@ -263,6 +265,7 @@ themeSwitcher.addEventListener('click', () => {
       break;
 
     default:
+      // next will be light
       loadTheme('light');
       break;
   }
