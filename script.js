@@ -314,5 +314,9 @@ window.addEventListener('keydown', (event) => {
     case 'KeyM':
       muteOrUnmute();
       break;
+
+    case 'KeyT':
+      themeSwitcher.click();
+      break;
   }
 });
