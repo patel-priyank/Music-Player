@@ -35,7 +35,7 @@ const allMusic = [
 ];
 
 // Check if playing
-let isPlaying = false;
+let isPlaying = true;
 
 // Play
 const playMusic = () => {
@@ -104,6 +104,8 @@ const updateProgressBar = () => {
     if (durationSeconds) {
       const durationSecondsText = durationSeconds < 10 ? `0${durationSeconds}` : durationSeconds;
       durationElement.textContent = `${durationMinutes}:${durationSecondsText}`;
+    } else {
+      durationElement.textContent = '0:00';
     }
 
     // Calculate display for current time
@@ -131,3 +133,5 @@ progressContainer.addEventListener('click', setProgress);
 
 // On Load - Select First Music
 loadMusic(allMusic[musicIndex]);
+updateProgressBar();
+isPlaying = false;
