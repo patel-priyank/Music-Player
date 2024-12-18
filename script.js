@@ -69,12 +69,21 @@ let musicIndex = Math.floor(Math.random() * allMusic.length);
 
 // Previous Music
 const prevMusic = () => {
-  musicIndex--;
-  if (musicIndex < 0) {
-    musicIndex = allMusic.length - 1;
+  const currentTime = music.currentTime;
+  const currentTimeMinutes = Math.floor(currentTime / 60);
+  const currentTimeSeconds = Math.floor(currentTime % 60);
+
+  // Restart music if more than 5 seconds have elapsed else play previous music
+  if (currentTimeMinutes === 0 && currentTimeSeconds <= 5) {
+    musicIndex--;
+    if (musicIndex < 0) {
+      musicIndex = allMusic.length - 1;
+    }
+    loadMusic(allMusic[musicIndex]);
+    playMusic();
+  } else {
+    music.currentTime = 0;
   }
-  loadMusic(allMusic[musicIndex]);
-  playMusic();
 };
 
 // Next Music
@@ -99,10 +108,10 @@ const updateProgressBar = () => {
     // Calculate display for duration
     const durationMinutes = Math.floor(duration / 60);
     const durationSeconds = Math.floor(duration % 60);
+    const durationSecondsText = durationSeconds < 10 ? `0${durationSeconds}` : durationSeconds;
 
     // Delay switching duration element to avoid NaN
     if (durationSeconds) {
-      const durationSecondsText = durationSeconds < 10 ? `0${durationSeconds}` : durationSeconds;
       durationElement.textContent = `${durationMinutes}:${durationSecondsText}`;
     } else {
       durationElement.textContent = '0:00';
