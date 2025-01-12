@@ -131,6 +131,11 @@ const setProgress = event => {
   const clickPosition = event.offsetX;
   const duration = music.duration;
   music.currentTime = (clickPosition / width) * duration;
+
+  if (!isPlaying) {
+    playMusic();
+    isPlaying = true;
+  }
 };
 
 // Event Listeners
