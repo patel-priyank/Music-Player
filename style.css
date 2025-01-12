@@ -68,6 +68,18 @@ h3 {
   height: 100%;
   width: 0%;
   transition: width 0.1s linear;
+  position: relative;
+}
+
+.progress::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  height: 16px;
+  width: 16px;
+  border-radius: 50vmax;
+  background-color: inherit;
 }
 
 .duration-wrapper {
